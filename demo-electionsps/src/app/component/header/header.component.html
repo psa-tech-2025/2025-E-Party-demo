@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-orange fixed-top shadow-sm">
+  <div class="container-fluid">
+    <!-- Logo + Title -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="assets/logo.png" alt="पक्षाचे चिन्ह" width="40" height="40" class="me-2">
+      <span class="fw-bold fs-5">पक्षाचे नाव</span>
+    </a>
+
+    <!-- Hamburger Menu for Mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mnsNavbar"
+      aria-controls="mnsNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Items -->
+    <div class="collapse navbar-collapse justify-content-end" id="mnsNavbar">
+      <ul class="navbar-nav mb-2 mb-lg-0 fw-semibold">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">पक्षाविषयी</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">आंदोलनं व उपक्रम</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">विकासनामा</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">माध्यमं</a>
+        </li>
+             <li class="nav-item">
+          <a class="nav-link" routerLink="/login">login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="scroll-container">
+ <div class="scroll-banner">
+  <div class="scroll-text">
+    {{ 'banner.welcome' | translate }}&nbsp;&nbsp;|&nbsp;&nbsp;
+  </div>
+</div>
+</div>
+<!-- To avoid content hiding behind fixed navbar -->
+<div class="mt-5"></div>
+
