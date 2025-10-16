@@ -10,7 +10,23 @@ import { FooterComponent } from './component/footer/footer.component';
 import { LoaderComponent } from './component/loader/loader.component';
 import { LoginComponent } from './login/login.component';
 import { InfodetailsComponent } from './infodetails/infodetails.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// Import Firebase modules
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+
+import {AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { ForgotPasswordComponentComponent } from './auth/forgot-password-component/forgot-password-component.component';
+import { VarifyEmailComponent } from './auth/varify-email/varify-email.component';
+import { UserinfoComponent } from './infodetails/userinfo/userinfo.component';
+import { FileuploadComponent } from './infodetails/fileupload/fileupload.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { UserfetchComponent } from './userfetch/userfetch.component';
+import { PublicGalleryComponent } from './public-gallery/public-gallery.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -22,13 +38,31 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     LoaderComponent,
     LoginComponent,
-    InfodetailsComponent
+    InfodetailsComponent,
+    SignInComponent,
+    RegisterComponent,
+    ForgotPasswordComponentComponent,
+    VarifyEmailComponent,
+    UserinfoComponent,
+    FileuploadComponent,
+    UserfetchComponent,
+    PublicGalleryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    // Initialize Firebase
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+
+    // Firestore
+    provideFirestore(() => getFirestore()),
+
+    // Storage
+    provideStorage(() => getStorage()),
     
        TranslateModule.forRoot({
             defaultLanguage: 'mr', // ✅ Marathi is default

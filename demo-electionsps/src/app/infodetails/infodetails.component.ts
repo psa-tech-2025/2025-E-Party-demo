@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth/auth.service';
 interface UserEntry {
   username: string; // logged-in user
   message: string;
@@ -16,7 +17,7 @@ export class InfodetailsComponent implements OnInit {
     userForm: FormGroup;
   userEntries: UserEntry[] = [];
   currentUser: string | null = '';
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private auth:AuthService) {
         this.userForm = this.fb.group({
       message: ['', Validators.required],
       image: [null]
@@ -32,6 +33,9 @@ export class InfodetailsComponent implements OnInit {
       this.userEntries = JSON.parse(data);
     }
 
+  }
+  logout() {
+    this.auth.logout();
   }
 
     onImageChange(event: any) {

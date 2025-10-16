@@ -1,4 +1,7 @@
 
+<div>
+     <button type="button" class="btn btn-outline-success" (click)="logout()">Logout</button>
+</div>
 <div class="container mt-4">
   <h4>Post Message</h4>
   <form [formGroup]="userForm" (ngSubmit)="saveEntry()" class="mb-4 border rounded p-3 shadow">

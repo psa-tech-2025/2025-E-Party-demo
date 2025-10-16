@@ -2,14 +2,40 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { InfodetailsComponent } from './infodetails/infodetails.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { ForgotPasswordComponentComponent } from './auth/forgot-password-component/forgot-password-component.component';
+import { VarifyEmailComponent } from './auth/varify-email/varify-email.component';
+import { UserinfoComponent } from './infodetails/userinfo/userinfo.component';
+import { FileuploadComponent } from './infodetails/fileupload/fileupload.component';
+import { UserfetchComponent } from './userfetch/userfetch.component';
+import { PublicGalleryComponent } from './public-gallery/public-gallery.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
-    path:'login', component:LoginComponent
+    path:'login', component:SignInComponent
+  },
+  {
+    path:'register', component: RegisterComponent
   },
   {
     path:'info', component: InfodetailsComponent
   },
+    {path: 'forgot-password', component : ForgotPasswordComponentComponent},
+  {path: 'varify-email', component : VarifyEmailComponent},
+  {
+    path:'userinfo', component:UserinfoComponent
+  },
+  {
+    path:'upfile', component: FileuploadComponent
+  },
+  {
+    path:'about', component:UserfetchComponent, canActivate: [AuthGuard]
+  },
+  {
+    path:'galary', component:PublicGalleryComponent
+  }
 
 ];
 
