@@ -11,6 +11,8 @@ import { FileuploadComponent } from './infodetails/fileupload/fileupload.compone
 import { UserfetchComponent } from './userfetch/userfetch.component';
 import { PublicGalleryComponent } from './public-gallery/public-gallery.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { AdminProductFormComponent } from './admin/admin-product-form/admin-product-form.component';
 
 const routes: Routes = [
   {
@@ -35,7 +37,10 @@ const routes: Routes = [
   },
   {
     path:'galary', component:PublicGalleryComponent
-  }
+  },
+  { path: 'admin/products', component: AdminProductsComponent, },
+  { path: 'admin/products/add', component: AdminProductFormComponent, },
+  { path: 'admin/products/edit/:id', component: AdminProductFormComponent, },
 
 ];
 

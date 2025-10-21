@@ -27,6 +27,9 @@ import { FileuploadComponent } from './infodetails/fileupload/fileupload.compone
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserfetchComponent } from './userfetch/userfetch.component';
 import { PublicGalleryComponent } from './public-gallery/public-gallery.component';
+import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { AdminProductFormComponent } from './admin/admin-product-form/admin-product-form.component';
+import { PublicProductsComponent } from './public-products/public-products.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -46,7 +49,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserinfoComponent,
     FileuploadComponent,
     UserfetchComponent,
-    PublicGalleryComponent
+    PublicGalleryComponent,
+    AdminProductsComponent,
+    AdminProductFormComponent,
+    PublicProductsComponent
   ],
   imports: [
     BrowserModule,
