@@ -1,5 +1,25 @@
-{
-  "banner": {
-    "welcome": "Welcome to Dharashiv Constituency | Welcome to Dharashiv Constituency | Welcome to Dharashiv Constituency"
-  }
+
+ 
+  {
+  "NAME": "Tanaji Sawant",
+  "DESIGNATION": "MLA Bhum Paranda Washi | Shiv Sena",
+  "HOME": "Home",
+  "NEWS": "News",
+  "GALLERY": "Gallery",
+  "ABOUT": "About",
+  "WORK": "Work",
+  "EVENTS": "Events",
+  "SCHEME": "Schemes",
+  "CONTACT": "Contact",
+  "Admin": "Admin login",
+   "LOGOUT": "Logout",
+     "MANAGE_HEADER": "Manage Header",
+  "UPLOAD_IMAGE": "Upload Image",
+  "ENTER_NAME": "Enter Name",
+  "ENTER_DESIGNATION": "Enter Designation",
+  "SAVE": "Save",
+  "DELETE": "Delete",
+  "CANCEL": "Cancel"
 }
+
+

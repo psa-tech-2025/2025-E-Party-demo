@@ -2,23 +2,31 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider} from '@angular/fire/auth'
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+    // BehaviorSubject to track login state
+  private loginStatus = new BehaviorSubject<boolean>(this.hasToken());
+  loginStatus$ = this.loginStatus.asObservable();
+    isAdminLoggedIn = false;
   constructor(private fireauth:AngularFireAuth, private router:Router) { 
 
   }
   // login Method
-  login(email:string, password: string) {
-    this.fireauth.signInWithEmailAndPassword(email,password).then( () => {
-localStorage.setItem('token','true');
-this.router.navigate(['/about'])
+  // login Method
+  login(email: string, password: string) {
+    this.fireauth.signInWithEmailAndPassword(email, password).then(() => {
+      localStorage.setItem('token', 'true');
+      this.loginStatus.next(true);  // 🔔 Notify subscribers
+      this.router.navigate(['/about']);
     }, err => {
-      alert('something went wrong');
-      this.router.navigate(['/login'])
-    })
+      alert('Something went wrong');
+      this.router.navigate(['/login']);
+    });
   }
 
     register(email : string, password : string) {
@@ -40,14 +48,27 @@ this.router.navigate(['/about'])
       alert('Something went wrong. Not able to send mail to your email.')
     })
   }
-    logout() {
-    this.fireauth.signOut().then( () => {
+  logout() {
+    this.fireauth.signOut().then(() => {
       localStorage.removeItem('token');
+      this.loginStatus.next(false);  // 🔔 Notify subscribers
       this.router.navigate(['/login']);
     }, err => {
-      alert(err.message);
-    })
+      alert('Logout failed');
+    });
   }
+
+    // check if token exists
+  hasToken(): boolean {
+    return localStorage.getItem('token') === 'true';
+  }
+    isLoggedIn(): boolean {
+    return this.loginStatus.value;
+  }
+    // check if logged in
+  // isLoggedIn(): boolean {
+  //   return localStorage.getItem('token') === 'true';
+  // }
 
     // forgot password
   forgotPassword(email : string) {
