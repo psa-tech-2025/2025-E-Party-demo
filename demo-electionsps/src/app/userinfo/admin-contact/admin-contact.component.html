@@ -1,60 +1,101 @@
 <div *ngIf="!isAdmin" class="not-admin">
-  <p>🔒 You are not authorized to view this page.</p>
+  <p>🔒 {{ 'ADMIN_CONTACT.UNAUTHORIZED' | translate }}</p>
 </div>
 
 <div *ngIf="isAdmin && !loading" class="admin-contact-container">
-  <h2>📋 User Submitted Contacts</h2>
+  <h2>📋 {{ 'ADMIN_CONTACT.USER_CONTACTS_TITLE' | translate }}</h2>
 
-  <table class="contact-table" *ngIf="contacts.length; else noData">
-    <thead>
-      <tr>
-        <th>नाव</th>
-        <th>ईमेल</th>
-        <th>फोन</th>
-        <th>संदेश</th>
-        <th>PDF/DOC</th>
-        <th>फोटो</th>
-        <th>दिनांक</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let c of contacts">
-        <td>{{ c.name }}</td>
-        <td>{{ c.email }}</td>
-        <td>{{ c.phone }}</td>
-        <td>{{ c.message }}</td>
-        <td>
-          <a *ngIf="c.documentUrl" [href]="c.documentUrl" target="_blank">📄 Download</a>
-        </td>
-        <td>
-          <a *ngIf="c.photoUrl" [href]="c.photoUrl" target="_blank">
-            <img [src]="c.photoUrl" width="60" height="60" />
-          </a>
-        </td>
-        <td>{{ c.date?.toDate?.() | date:'short' || c.date | date:'short' }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="contact-table" *ngIf="contacts.length; else noData">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>{{ 'ADMIN_CONTACT.NAME' | translate }}</th>
+          <th>{{ 'ADMIN_CONTACT.EMAIL' | translate }}</th>
+          <th>{{ 'ADMIN_CONTACT.PHONE' | translate }}</th>
+          <th>{{ 'ADMIN_CONTACT.MESSAGE' | translate }}</th>
+          <th>{{ 'ADMIN_CONTACT.DOCUMENT' | translate }}</th>
+          <th>{{ 'ADMIN_CONTACT.PHOTO' | translate }}</th>
+          <th>{{ 'ADMIN_CONTACT.DATE' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of contacts; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ c.name }}</td>
+          <td>{{ c.email }}</td>
+          <td>{{ c.phone }}</td>
+          <td>{{ c.message }}</td>
+          <td>
+            <a *ngIf="c.documentUrl" [href]="c.documentUrl" target="_blank" class="download-link">
+              📄 {{ 'ADMIN_CONTACT.DOWNLOAD' | translate }}
+            </a>
+          </td>
+          <td>
+            <a *ngIf="c.photoUrl" [href]="c.photoUrl" target="_blank">
+              <img [src]="c.photoUrl" class="contact-photo" />
+            </a>
+          </td>
+          <td>{{ c.date?.toDate?.() | date:'short' || c.date | date:'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <ng-template #noData>
-    <p>❌ अजून कोणतेही संदेश आलेले नाहीत.</p>
+    <p class="no-data">❌ {{ 'ADMIN_CONTACT.NO_MESSAGES' | translate }}</p>
   </ng-template>
 </div>
 
 <div *ngIf="isAdmin" class="admin-contact-container">
-  <h2>Admin Contact Information</h2>
+  <h2>⚙️ {{ 'ADMIN_CONTACT.ADMIN_INFO_TITLE' | translate }}</h2>
 
-<form [formGroup]="adminContactForm" (ngSubmit)="saveAdminContactInfo()">
-  <input formControlName="address" placeholder="पत्ता" />
-  <input formControlName="phone" placeholder="फोन नंबर" />
-  <input formControlName="email" placeholder="ईमेल" />
-  <input formControlName="facebook" placeholder="Facebook URL" />
-  <input formControlName="twitter" placeholder="Twitter URL" />
-  <input formControlName="instagram" placeholder="Instagram URL" />
-  <button type="submit">Save</button>
-</form>
+  <form [formGroup]="adminContactForm" (ngSubmit)="saveAdminContactInfo()">
+    <div class="form-grid">
+      <input formControlName="address" [placeholder]="'ADMIN_CONTACT.ADDRESS' | translate" />
+      <input formControlName="phone" [placeholder]="'ADMIN_CONTACT.PHONE' | translate" />
+      <input formControlName="email" [placeholder]="'ADMIN_CONTACT.EMAIL' | translate" />
+      <input formControlName="facebook" [placeholder]="'ADMIN_CONTACT.FB_URL' | translate" />
+      <input formControlName="twitter" [placeholder]="'ADMIN_CONTACT.TW_URL' | translate" />
+      <input formControlName="instagram" [placeholder]="'ADMIN_CONTACT.IG_URL' | translate" />
+    </div>
 
+    <button type="submit" class="btn-primary">
+      💾 {{ 'ADMIN_CONTACT.SAVE' | translate }}
+    </button>
+  </form>
 
   <p class="message">{{ message }}</p>
 </div>
+
+<!-- src/app/admin-contact/admin-contact.component.html -->
+<!-- admin-contact.component.html (the header settings part) -->
+ <div *ngIf="isAdmin" class="admin-contact-container">
+<h2>🖼️ {{ 'ADMIN_CONTACT.HEADER_SETTINGS' | translate }}</h2>
+
+<form (ngSubmit)="updateHeaderSettings()" [formGroup]="headerForm">
+  <div class="form-grid">
+    <input formControlName="title" [placeholder]="'ADMIN_CONTACT.ENTER_PARTY_NAME' | translate" />
+
+    <div>
+      <input type="file" (change)="onLogoSelect($event)" accept="image/*" />
+      <div *ngIf="selectedLogoPreview" style="margin-top:8px;">
+        <small>{{ 'ADMIN_CONTACT.PREVIEW' | translate }}:</small><br />
+        <img [src]="selectedLogoPreview" alt="logo preview" style="height:60px;border-radius:6px;border:1px solid #ddd"/>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn-primary">
+    💾 {{ 'ADMIN_CONTACT.UPDATE_HEADER' | translate }}
+  </button>
+</form>
+
+<p *ngIf="message" class="text-success mt-2">
+  {{ 'ADMIN_CONTACT.UPDATE_SUCCESS' | translate }}
+</p>
+</div>
+
+
+
 

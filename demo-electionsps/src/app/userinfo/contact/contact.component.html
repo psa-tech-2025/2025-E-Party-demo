@@ -1,71 +1,69 @@
 <div class="contact-section">
   <h2 class="section-title">
-    <i class="bi bi-telephone-fill"></i> संपर्क साधा
+    <i class="bi bi-telephone-fill"></i> {{ 'CONTACT_FORM.TITLE' | translate }}
   </h2>
 
   <div class="contact-grid">
     <!-- Left: Contact Form -->
- <div class="contact-card form-card">
-  <h3 class="form-title">संदेश पाठवा</h3>
+    <div class="contact-card form-card">
+      <h3 class="form-title">{{ 'CONTACT_FORM.SEND_MESSAGE' | translate }}</h3>
 
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-    <div class="form-group">
-      <label>नाव *</label>
-      <input type="text" formControlName="name" placeholder="तुमचे नाव" />
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>{{ 'CONTACT_FORM.NAME' | translate }}</label>
+          <input type="text" formControlName="name" [placeholder]="'CONTACT_FORM.ENTER_NAME' | translate" />
+        </div>
+
+        <div class="form-group">
+          <label>{{ 'CONTACT_FORM.EMAIL' | translate }}</label>
+          <input type="email" formControlName="email" [placeholder]="'CONTACT_FORM.ENTER_EMAIL' | translate" />
+        </div>
+
+        <div class="form-group">
+          <label>{{ 'CONTACT_FORM.PHONE' | translate }}</label>
+          <input type="text" formControlName="phone" [placeholder]="'CONTACT_FORM.ENTER_PHONE' | translate" />
+        </div>
+
+        <div class="form-group">
+          <label>{{ 'CONTACT_FORM.MESSAGE' | translate }}</label>
+          <textarea formControlName="message" [placeholder]="'CONTACT_FORM.ENTER_MESSAGE' | translate"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>{{ 'CONTACT_FORM.UPLOAD_DOC' | translate }}</label>
+          <input type="file" (change)="onFileSelect($event, 'document')" accept=".pdf,.doc,.docx" />
+        </div>
+
+        <div class="form-group">
+          <label>{{ 'CONTACT_FORM.UPLOAD_PHOTO' | translate }}</label>
+          <input type="file" (change)="onFileSelect($event, 'photo')" accept="image/*" />
+        </div>
+
+        <button type="submit" class="btn-submit" [disabled]="isUploading || contactForm.invalid">
+          {{ isUploading ? ('CONTACT_FORM.SENDING' | translate) : ('CONTACT_FORM.SEND' | translate) }}
+        </button>
+      </form>
     </div>
 
-    <div class="form-group">
-      <label>ईमेल *</label>
-      <input type="email" formControlName="email" placeholder="तुमचा ईमेल" />
+    <!-- Right: Contact Info -->
+    <div class="contact-card info-card" *ngIf="contactInfo">
+      <h3 class="info-title">{{ 'CONTACT_FORM.OFFICE_INFO' | translate }}</h3>
+      <p><i class="bi bi-geo-alt-fill"></i> <strong>{{ 'CONTACT_FORM.ADDRESS' | translate }}</strong> {{ contactInfo.address }}</p>
+      <p><i class="bi bi-telephone-fill"></i> <strong>{{ 'CONTACT_FORM.PHONE_LABEL' | translate }}</strong> {{ contactInfo.phone }}</p>
+      <p><i class="bi bi-envelope-fill"></i> <strong>{{ 'CONTACT_FORM.EMAIL_LABEL' | translate }}</strong> {{ contactInfo.email }}</p>
     </div>
 
-    <div class="form-group">
-      <label>फोन *</label>
-      <input type="text" formControlName="phone" placeholder="तुमचा फोन नंबर" />
+    <div class="contact-card social-card" *ngIf="contactInfo">
+      <h3 class="info-title">{{ 'CONTACT_FORM.SOCIAL_MEDIA' | translate }}</h3>
+      <a *ngIf="contactInfo.facebook" [href]="contactInfo.facebook" target="_blank" class="social-btn fb">
+        <i class="bi bi-facebook"></i> {{ 'CONTACT_FORM.FOLLOW_FB' | translate }}
+      </a>
+      <a *ngIf="contactInfo.twitter" [href]="contactInfo.twitter" target="_blank" class="social-btn tw">
+        <i class="bi bi-twitter"></i> {{ 'CONTACT_FORM.FOLLOW_TW' | translate }}
+      </a>
+      <a *ngIf="contactInfo.instagram" [href]="contactInfo.instagram" target="_blank" class="social-btn ig">
+        <i class="bi bi-instagram"></i> {{ 'CONTACT_FORM.FOLLOW_IG' | translate }}
+      </a>
     </div>
-
-    <div class="form-group">
-      <label>संदेश *</label>
-      <textarea formControlName="message" placeholder="तुमचा संदेश"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>PDF किंवा DOC फाइल अपलोड करा</label>
-      <input type="file" (change)="onFileSelect($event, 'document')" accept=".pdf,.doc,.docx" />
-    </div>
-
-    <div class="form-group">
-      <label>फोटो अपलोड करा</label>
-      <input type="file" (change)="onFileSelect($event, 'photo')" accept="image/*" />
-    </div>
-
-    <button type="submit" class="btn-submit" [disabled]="isUploading || contactForm.invalid">
-      {{ isUploading ? 'अपलोड होत आहे...' : 'संदेश पाठवा' }}
-    </button>
-  </form>
-</div>
-
-
-    <!-- Right: Contact Info & Social -->
-   <div class="contact-card info-card" *ngIf="contactInfo">
-  <h3 class="info-title">कार्यालय माहिती</h3>
-  <p><i class="bi bi-geo-alt-fill"></i> <strong>पत्ता:</strong> {{ contactInfo.address }}</p>
-  <p><i class="bi bi-telephone-fill"></i> <strong>फोन:</strong> {{ contactInfo.phone }}</p>
-  <p><i class="bi bi-envelope-fill"></i> <strong>ईमेल:</strong> {{ contactInfo.email }}</p>
-</div>
-
-<div class="contact-card social-card" *ngIf="contactInfo">
-  <h3 class="info-title">सोशल मीडिया</h3>
-  <a *ngIf="contactInfo.facebook" [href]="contactInfo.facebook" target="_blank" class="social-btn fb">
-    <i class="bi bi-facebook"></i> Facebook वर फॉलो करा
-  </a>
-  <a *ngIf="contactInfo.twitter" [href]="contactInfo.twitter" target="_blank" class="social-btn tw">
-    <i class="bi bi-twitter"></i> Twitter वर फॉलो करा
-  </a>
-  <a *ngIf="contactInfo.instagram" [href]="contactInfo.instagram" target="_blank" class="social-btn ig">
-    <i class="bi bi-instagram"></i> Instagram वर फॉलो करा
-  </a>
-</div>
-
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { ContactService } from 'src/app/service/contact.service';
 
 
@@ -15,7 +16,8 @@ export class ContactComponent implements OnInit {
   isUploading = false;
   contactInfo: any;
 
-  constructor(private fb: FormBuilder, private contactService: ContactService) {
+  constructor(private fb: FormBuilder, private contactService: ContactService,private translate: TranslateService) {
+ 
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
