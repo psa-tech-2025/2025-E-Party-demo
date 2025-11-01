@@ -51,7 +51,18 @@
   "save": "Save",
   "cancel": "Cancel",
   "edit": "Edit",
-  "delete": "Delete"
+  "delete": "Delete",
+   "photoGallery": "Photo Gallery",
+  "addPhoto": "Add Photo",
+  "caption": "Caption",
+  "description": "Description",
+  "date": "Date",
+  "gsave": "Save",
+  "gcancel": "Cancel",
+  "gedit": "Edit",
+  "gdelete": "Delete",
+  "gview": "View",
+  "gclose": "Close"
 }
 
 

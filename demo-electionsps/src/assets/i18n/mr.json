@@ -49,7 +49,19 @@
   "save": "जतन करा",
   "cancel": "रद्द करा",
   "edit": "संपादित करा",
-  "delete": "हटवा"
+  "delete": "हटवा",
+   "photoGallery": "छायाचित्र गॅलरी",
+  "addPhoto": "फोटो जोडा",
+  "caption": "शीर्षक",
+  "description": "वर्णन",
+  "date": "दिनांक",
+  "gsave": "जतन करा",
+  "gcancel": "रद्द करा",
+  "gedit": "संपादन करा",
+  "gdelete": "हटवा",
+  "gview": "पहा",
+  "gclose": "बंद करा"
+  
 
   
 }

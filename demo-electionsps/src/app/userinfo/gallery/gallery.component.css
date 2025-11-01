@@ -1,0 +1,165 @@
+.gallery-container {
+  padding: 20px;
+  max-width: 1100px; /* keeps layout centered, doesn’t stretch full width */
+  margin: 0 auto;
+}
+
+.gallery-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff6600;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Grid layout: 2 columns desktop/tablet, 1 column mobile */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Each card fixed size, consistent */
+.gallery-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  width: 100%;
+  max-width: 520px; /* fixes width consistency */
+  margin: 0 auto;
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Image with fixed height, cropped neatly */
+.gallery-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+/* Card inner content */
+.gallery-content {
+  padding: 15px;
+  text-align: left;
+}
+
+.gallery-caption {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.gallery-desc {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.gallery-date {
+  font-size: 13px;
+  color: #888;
+}
+
+.admin-toolbar {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.gallery-form {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.admin-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ✅ Responsive: On mobile (below 768px) → 1 card per row */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-card {
+    max-width: 100%;
+  }
+
+  .gallery-image {
+    height: 200px;
+  }
+}
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #555;
+}
+
+.modal-caption {
+  font-size: 22px;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.modal-desc {
+  font-size: 15px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.modal-date {
+  color: #999;
+  font-size: 13px;
+}

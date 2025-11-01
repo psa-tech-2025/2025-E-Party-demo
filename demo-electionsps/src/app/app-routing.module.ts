@@ -17,6 +17,7 @@ import { ContactComponent } from './userinfo/contact/contact.component';
 import { AboutComponent } from './userinfo/about/about.component';
 import { EventsComponent } from './userinfo/events/events.component';
 import { WorkComponent } from './userinfo/work/work.component';
+import { GalleryComponent } from './userinfo/gallery/gallery.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,9 @@ const routes: Routes = [
   },
   {
     path:'work', component:WorkComponent
+  },
+  {
+    path: 'galaryy', component:GalleryComponent
   }
 
 ];
