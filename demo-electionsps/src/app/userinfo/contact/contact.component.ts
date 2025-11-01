@@ -1,9 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
-import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
-import {  ConactService } from 'src/app/service/contact.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ContactService } from 'src/app/service/contact.service';
 
 
 @Component({
@@ -12,63 +9,58 @@ import {  ConactService } from 'src/app/service/contact.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-    isAdminLoggedIn = false; // Update dynamically from AuthService
-  editMode = false;
-  contactData: any = {
-    name: 'तनाजी सावंत',
-    designation: 'आमदार भूम पंढरपूर वाशी',
-    party: 'शिवसेना',
-    education: 'पदवीधर',
-    bio: 'जीवनातील प्रवास आणि सार्वजनिक कार्याचा अनुभव.',
-    phone: '+91 1234567890',
-    email: 'tanajisawant@shivsena.org',
-    address: 'भूम पंढरपूर वाशी, महाराष्ट्र',
-    imageUrl: 'assets/images/default-profile.jpg'
-  };
+  contactForm!: FormGroup;
+  selectedDocument: File | null = null;
+  selectedPhoto: File | null = null;
+  isUploading = false;
+  contactInfo: any;
 
-  constructor(public contactService:ConactService , private fb: FormBuilder, private auth: AuthService) {}
-    ngOnInit() {
-    // ✅ Subscribe to login state from AuthService
-    this.auth.loginStatus$.subscribe(status => {
-      this.isAdminLoggedIn = status;
-      console.log('Admin logged in:', status);
+  constructor(private fb: FormBuilder, private contactService: ContactService) {
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required],
+      message: ['', Validators.required]
     });
-
-    // Optional: Load saved data
-    const savedData = localStorage.getItem('contactData');
-    if (savedData) {
-      this.contactData = JSON.parse(savedData);
-    }
-  }  
-  
-  toggleEditMode() {
-    this.editMode = !this.editMode;
   }
-
-
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.contactService.uploadImage(file).subscribe({
-        next: (url) => {
-          if (url) this.contactData.imageUrl = url;
-        },
-        error: (err) => console.error('Upload error:', err)
-      });
-    }
-  }
-  saveContact() {
-    this.contactService.saveContact(this.contactData);
-    this.editMode = false;
-  }
-
-  deleteContact() {
-    this.contactService.deleteContact();
-    this.editMode = false;
-  }
-
-  cancelEdit() {
-    this.editMode = false;
-  }
+  async ngOnInit() {
+  this.contactInfo = await this.contactService.getAdminContactInfo();
 }
 
+  onFileSelect(event: any, type: 'document' | 'photo') {
+    const file = event.target.files[0];
+    if (file) {
+      if (type === 'document') this.selectedDocument = file;
+      else this.selectedPhoto = file;
+    }
+  }
+
+  async onSubmit() {
+    if (this.contactForm.invalid) return;
+
+    this.isUploading = true;
+    const contactData = this.contactForm.value;
+    const uploadResults: any = {};
+
+    try {
+      if (this.selectedDocument)
+        uploadResults.documentUrl = await this.contactService.uploadFile('contact/documents', this.selectedDocument);
+
+      if (this.selectedPhoto)
+        uploadResults.photoUrl = await this.contactService.uploadFile('contact/photos', this.selectedPhoto);
+
+      const finalData = { ...contactData, ...uploadResults, date: new Date() };
+      await this.contactService.saveContactData(finalData);
+
+      alert('संदेश यशस्वीपणे पाठवला गेला!');
+      this.contactForm.reset();
+      this.selectedDocument = null;
+      this.selectedPhoto = null;
+    } catch (err) {
+      console.error('Upload Error:', err);
+      alert('त्रुटी आली आहे. कृपया पुन्हा प्रयत्न करा.');
+    } finally {
+      this.isUploading = false;
+    }
+  }
+}

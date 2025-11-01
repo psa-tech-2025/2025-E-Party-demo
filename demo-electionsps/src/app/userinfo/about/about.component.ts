@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 import { AboutService } from 'src/app/service/about.service';
-import {  ConactService } from 'src/app/service/contact.service';
+
 
 @Component({
   selector: 'app-about',

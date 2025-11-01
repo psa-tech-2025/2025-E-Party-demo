@@ -38,6 +38,7 @@ import { WorkComponent } from './userinfo/work/work.component';
 import { GalleryComponent } from './userinfo/gallery/gallery.component';
 import { NewsComponent } from './userinfo/news/news.component';
 import { SafeUrlPipe } from './pipe/safe-url.pipe';
+import { AdminContactComponent } from './userinfo/admin-contact/admin-contact.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -68,7 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     WorkComponent,
     GalleryComponent,
     NewsComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    AdminContactComponent
   ],
   imports: [
     BrowserModule,

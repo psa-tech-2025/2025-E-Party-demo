@@ -44,8 +44,9 @@
   <button routerLink="/about"><i class="fa-solid fa-user"></i> {{ 'ABOUT' | translate }}</button>
   <button routerLink="/work"><i class="fa-solid fa-trophy"></i> {{ 'WORK' | translate }}</button>
   <button routerLink="event"><i class="fa-solid fa-calendar-days"></i> {{ 'EVENTS' | translate }}</button>
-  <button><i class="fa-solid fa-file-lines"></i> {{ 'SCHEME' | translate }}</button>
+  <!-- <button><i class="fa-solid fa-file-lines"></i> {{ 'SCHEME' | translate }}</button> -->
   <button routerLink="/contact" ><i class="fa-solid fa-phone"></i> {{ 'CONTACT' | translate }}</button>
+  <button routerLink="/admin/contacts"><i class="fa-solid fa-calendar-days"></i> Admin Only</button> 
 
   <!-- Admin toggle -->
   <button *ngIf="!isAdminLoggedIn" (click)="goToLogin()">

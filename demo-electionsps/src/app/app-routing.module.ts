@@ -19,6 +19,7 @@ import { EventsComponent } from './userinfo/events/events.component';
 import { WorkComponent } from './userinfo/work/work.component';
 import { GalleryComponent } from './userinfo/gallery/gallery.component';
 import { NewsComponent } from './userinfo/news/news.component';
+import { AdminContactComponent } from './userinfo/admin-contact/admin-contact.component';
 
 const routes: Routes = [
   {
@@ -64,7 +65,8 @@ const routes: Routes = [
   },
   {
     path:'news', component:NewsComponent
-  }
+  },
+    { path: 'admin/contacts', component: AdminContactComponent }
 
 ];
 
