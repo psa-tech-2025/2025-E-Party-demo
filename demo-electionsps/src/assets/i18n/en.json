@@ -4,7 +4,7 @@
   "NAME": "Tanaji Sawant",
   "DESIGNATION": "MLA Bhum Paranda Washi | Shiv Sena",
   "HOME": "Home",
-  "NEWS": "News",
+  "NEWSS": "News",
   "GALLERY": "Gallery",
   "ABOUT": "About",
   "WORK": "Work",
@@ -62,7 +62,20 @@
   "gedit": "Edit",
   "gdelete": "Delete",
   "gview": "View",
-  "gclose": "Close"
+  "gclose": "Close",
+  "NEWS": {
+    "TITLE": "News & Updates",
+    "ADD_NEWS": "Add News",
+    "EDIT_NEWS": "Edit News",
+    "PLACEHOLDER_TITLE": "News Title",
+    "PLACEHOLDER_CATEGORY": "Category",
+    "PLACEHOLDER_DESC": "News Description",
+    "PLACEHOLDER_URL": "Social Media URL (optional)",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "EDIT": "Edit",
+    "DELETE": "Delete"
+  }
 }
 
 

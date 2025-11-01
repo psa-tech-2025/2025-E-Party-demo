@@ -36,6 +36,8 @@ import { AboutComponent } from './userinfo/about/about.component';
 import { EventsComponent } from './userinfo/events/events.component';
 import { WorkComponent } from './userinfo/work/work.component';
 import { GalleryComponent } from './userinfo/gallery/gallery.component';
+import { NewsComponent } from './userinfo/news/news.component';
+import { SafeUrlPipe } from './pipe/safe-url.pipe';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -64,7 +66,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AboutComponent,
     EventsComponent,
     WorkComponent,
-    GalleryComponent
+    GalleryComponent,
+    NewsComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,

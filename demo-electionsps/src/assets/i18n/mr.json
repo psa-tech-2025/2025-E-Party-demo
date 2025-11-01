@@ -2,7 +2,7 @@
   "NAME": "तनाजी सावंत",
   "DESIGNATION": "आमदार भूम परंडा वाशी | शिवसेना",
   "HOME": "मुखपृष्ठ",
-  "NEWS": "बातम्या",
+  "NEWSS": "बातम्या",
   "GALLERY": "गॅलरी",
   "ABOUT": "माझ्याबद्दल",
   "WORK": "कामे",
@@ -60,7 +60,20 @@
   "gedit": "संपादन करा",
   "gdelete": "हटवा",
   "gview": "पहा",
-  "gclose": "बंद करा"
+  "gclose": "बंद करा",
+    "NEWS": {
+    "TITLE": "बातम्या व अपडेट्स",
+    "ADD_NEWS": "बातमी जोडा",
+    "EDIT_NEWS": "बातमी संपादित करा",
+    "PLACEHOLDER_TITLE": "बातमी शीर्षक",
+    "PLACEHOLDER_CATEGORY": "वर्ग",
+    "PLACEHOLDER_DESC": "बातमीचे वर्णन",
+    "PLACEHOLDER_URL": "सोशल मीडिया लिंक (पर्यायी)",
+    "SAVE": "जतन करा",
+    "CANCEL": "रद्द करा",
+    "EDIT": "संपादित करा",
+    "DELETE": "हटवा"
+  }
   
 
   
