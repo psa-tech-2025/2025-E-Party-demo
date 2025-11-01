@@ -32,7 +32,7 @@
   <div class="form-buttons">
     <button (click)="saveHeader()"><i class="fa-solid fa-floppy-disk"></i> {{ 'SAVE' | translate }}</button>
     <button (click)="deleteHeader()"><i class="fa-solid fa-trash"></i> {{ 'DELETE' | translate }}</button>
-    <button (click)="cancelEdit()"><i class="fa-solid fa-xmark"></i> {{ 'CANCEL' | translate }}</button>
+    <button  (click)="cancelEdit()"><i class="fa-solid fa-xmark"></i> {{ 'CANCEL' | translate }}</button>
   </div>
 </div>
 
@@ -41,11 +41,11 @@
   <button><i class="fa-solid fa-house"></i> {{ 'HOME' | translate }}</button>
   <button><i class="fa-solid fa-newspaper"></i> {{ 'NEWS' | translate }}</button>
   <button><i class="fa-solid fa-camera"></i> {{ 'GALLERY' | translate }}</button>
-  <button><i class="fa-solid fa-user"></i> {{ 'ABOUT' | translate }}</button>
+  <button routerLink="/about"><i class="fa-solid fa-user"></i> {{ 'ABOUT' | translate }}</button>
   <button><i class="fa-solid fa-trophy"></i> {{ 'WORK' | translate }}</button>
-  <button><i class="fa-solid fa-calendar-days"></i> {{ 'EVENTS' | translate }}</button>
+  <button routerLink="event"><i class="fa-solid fa-calendar-days"></i> {{ 'EVENTS' | translate }}</button>
   <button><i class="fa-solid fa-file-lines"></i> {{ 'SCHEME' | translate }}</button>
-  <button><i class="fa-solid fa-phone"></i> {{ 'CONTACT' | translate }}</button>
+  <button routerLink="/contact" ><i class="fa-solid fa-phone"></i> {{ 'CONTACT' | translate }}</button>
 
   <!-- Admin toggle -->
   <button *ngIf="!isAdminLoggedIn" (click)="goToLogin()">

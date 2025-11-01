@@ -19,7 +19,30 @@
   "ENTER_DESIGNATION": "Enter Designation",
   "SAVE": "Save",
   "DELETE": "Delete",
-  "CANCEL": "Cancel"
+  "CANCEL": "Cancel",
+    "ABOUT_ME": "About Me",
+  "NAMEE": "Name",
+  "DESIGNATIONN": "Designation",
+  "PARTY": "Party",
+  "EDUCATION": "Education",
+  "BIO": "Biography",
+  "BIO_DESC": "Tanaji Sawant is a senior leader of Shiv Sena and MLA of Bhum Paranda Washi constituency. During his tenure, he has undertaken several development works.",
+  "CONTACT_INFO": "Contact Information",
+  "SOCIAL_MEDIA": "Social Media",
+  "EVENTSS": "Events",
+  "ADD_EVENT": "Add Event",
+  "EDIT_EVENT": "Edit Event",
+  "EVENT_TITLE": "Event Title",
+  "DESCRIPTION": "Description",
+  "LOCATION": "Location",
+  "DATE": "Date",
+  "STATUS": "Status",
+  "UPCOMING": "Upcoming",
+  "COMPLETED": "Completed",
+  "SAVEE": "Save",
+  "CANCELL": "Cancel",
+  "EDITT": "Edit",
+  "DELETEE": "Delete"
 }
 
 

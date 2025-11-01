@@ -32,6 +32,8 @@ import { AdminProductFormComponent } from './admin/admin-product-form/admin-prod
 import { PublicProductsComponent } from './public-products/public-products.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { ContactComponent } from './userinfo/contact/contact.component';
+import { AboutComponent } from './userinfo/about/about.component';
+import { EventsComponent } from './userinfo/events/events.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -56,7 +58,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminProductFormComponent,
     PublicProductsComponent,
     NavbarComponent,
-    ContactComponent
+    ContactComponent,
+    AboutComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
