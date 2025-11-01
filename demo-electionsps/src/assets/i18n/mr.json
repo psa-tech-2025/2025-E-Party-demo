@@ -40,7 +40,16 @@
   "SAVEE": "जतन करा",
   "CANCELL": "रद्द करा",
   "EDITT": "संपादित करा",
-  "DELETEE": "हटवा"
+  "DELETEE": "हटवा",
+    "workTitle": "आमची कामे",
+  "addWork": "नवीन काम जोडा",
+  "workTitlePlaceholder": "कामाचे शीर्षक",
+  "workDescPlaceholder": "वर्णन",
+  "workYearPlaceholder": "वर्ष",
+  "save": "जतन करा",
+  "cancel": "रद्द करा",
+  "edit": "संपादित करा",
+  "delete": "हटवा"
 
   
 }

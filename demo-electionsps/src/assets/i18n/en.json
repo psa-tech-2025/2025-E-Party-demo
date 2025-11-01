@@ -42,7 +42,16 @@
   "SAVEE": "Save",
   "CANCELL": "Cancel",
   "EDITT": "Edit",
-  "DELETEE": "Delete"
+  "DELETEE": "Delete",
+  "workTitle": "Our Works",
+  "addWork": "Add Work",
+  "workTitlePlaceholder": "Work Title",
+  "workDescPlaceholder": "Description",
+  "workYearPlaceholder": "Year",
+  "save": "Save",
+  "cancel": "Cancel",
+  "edit": "Edit",
+  "delete": "Delete"
 }
 
 

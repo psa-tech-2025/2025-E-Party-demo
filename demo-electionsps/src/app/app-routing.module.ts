@@ -16,6 +16,7 @@ import { AdminProductFormComponent } from './admin/admin-product-form/admin-prod
 import { ContactComponent } from './userinfo/contact/contact.component';
 import { AboutComponent } from './userinfo/about/about.component';
 import { EventsComponent } from './userinfo/events/events.component';
+import { WorkComponent } from './userinfo/work/work.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,9 @@ const routes: Routes = [
   },
   {
     path:'event', component:EventsComponent
+  },
+  {
+    path:'work', component:WorkComponent
   }
 
 ];
