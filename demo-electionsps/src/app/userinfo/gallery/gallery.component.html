@@ -1,8 +1,20 @@
 <h2 class="gallery-title">📸 {{ 'photoGallery' | translate }}</h2>
 
 <div *ngIf="isAdminLoggedIn" class="admin-toolbar">
-  <button class="btn btn-primary" (click)="toggleForm()">+ {{ 'addPhoto' | translate }}</button>
+  <button 
+    class="btn btn-primary" 
+    (click)="toggleForm()" 
+    *ngIf="galleryPhotos.length < 10"
+  >
+    + {{ 'addPhoto' | translate }}
+  </button>
+
+  <!-- Optional message when max reached -->
+  <p *ngIf="galleryPhotos.length >= 10" class="text-danger mt-2">
+    ⚠️ Maximum 10 photos allowed in gallery.
+  </p>
 </div>
+
 
 <div *ngIf="showForm && isAdminLoggedIn" class="gallery-form">
   <input [(ngModel)]="selectedPhoto.caption" placeholder="{{ 'caption' | translate }}" class="form-control" />

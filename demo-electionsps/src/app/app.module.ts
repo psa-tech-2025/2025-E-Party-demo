@@ -39,6 +39,8 @@ import { GalleryComponent } from './userinfo/gallery/gallery.component';
 import { NewsComponent } from './userinfo/news/news.component';
 import { SafeUrlPipe } from './pipe/safe-url.pipe';
 import { AdminContactComponent } from './userinfo/admin-contact/admin-contact.component';
+import { HomeComponent } from './userinfo/home/home.component';
+import { WhatsappFloatComponent } from './shared/whatsapp-float/whatsapp-float.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -70,7 +72,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     GalleryComponent,
     NewsComponent,
     SafeUrlPipe,
-    AdminContactComponent
+    AdminContactComponent,
+    HomeComponent,
+    WhatsappFloatComponent
   ],
   imports: [
     BrowserModule,

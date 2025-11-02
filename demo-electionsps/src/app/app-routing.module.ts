@@ -20,6 +20,7 @@ import { WorkComponent } from './userinfo/work/work.component';
 import { GalleryComponent } from './userinfo/gallery/gallery.component';
 import { NewsComponent } from './userinfo/news/news.component';
 import { AdminContactComponent } from './userinfo/admin-contact/admin-contact.component';
+import { HomeComponent } from './userinfo/home/home.component';
 
 const routes: Routes = [
   {
@@ -42,9 +43,9 @@ const routes: Routes = [
   // {
   //   path:'about', component:UserfetchComponent, canActivate: [AuthGuard]
   // },
-  {
-    path:'galary', component:PublicGalleryComponent
-  },
+  // {
+  //   path:'galary', component:PublicGalleryComponent
+  // },
   { path: 'admin/products', component: AdminProductsComponent, },
   { path: 'admin/products/add', component: AdminProductFormComponent, },
   { path: 'admin/products/edit/:id', component: AdminProductFormComponent, },
@@ -66,7 +67,15 @@ const routes: Routes = [
   {
     path:'news', component:NewsComponent
   },
-    { path: 'admin/contacts', component: AdminContactComponent }
+    { path: 'admin/contacts', component: AdminContactComponent },
+    {
+      path:'home', component:HomeComponent
+    },
+     // ✅ Redirect empty path to home
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+  // (optional) wildcard route for 404 page
+  { path: '**', redirectTo: 'home' }
 
 ];
 

@@ -39,18 +39,23 @@ export class GalleryComponent implements OnInit {
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
-
-  savePhoto() {
-    if (this.selectedPhoto.id) {
-      this.galleryService
-        .update(this.selectedPhoto.id, this.selectedPhoto, this.selectedFile || undefined)
-        .then(() => this.cancelEdit());
-    } else {
-      this.galleryService
-        .add(this.selectedPhoto, this.selectedFile || undefined)
-        .then(() => this.cancelEdit());
-    }
+savePhoto() {
+  // Prevent adding more than 10 photos
+  if (!this.selectedPhoto.id && this.galleryPhotos.length >= 10) {
+    alert('Maximum 10 gallery photos allowed.');
+    return;
   }
+
+  if (this.selectedPhoto.id) {
+    this.galleryService
+      .update(this.selectedPhoto.id, this.selectedPhoto, this.selectedFile || undefined)
+      .then(() => this.cancelEdit());
+  } else {
+    this.galleryService
+      .add(this.selectedPhoto, this.selectedFile || undefined)
+      .then(() => this.cancelEdit());
+  }
+}
 
   editPhoto(photo: GalleryPhoto) {
     this.selectedPhoto = { ...photo };
