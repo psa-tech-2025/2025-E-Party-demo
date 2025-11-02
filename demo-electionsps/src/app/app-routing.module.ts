@@ -26,20 +26,20 @@ const routes: Routes = [
   {
     path:'login', component:SignInComponent
   },
-  {
-    path:'register', component: RegisterComponent
-  },
-  {
-    path:'info', component: InfodetailsComponent
-  },
-    {path: 'forgot-password', component : ForgotPasswordComponentComponent},
-  {path: 'varify-email', component : VarifyEmailComponent},
-  {
-    path:'userinfo', component:UserinfoComponent
-  },
-  {
-    path:'upfile', component: FileuploadComponent
-  },
+  // {
+  //   path:'register', component: RegisterComponent
+  // },
+  // {
+  //   path:'info', component: InfodetailsComponent
+  // },
+    // {path: 'forgot-password', component : ForgotPasswordComponentComponent},
+  // {path: 'varify-email', component : VarifyEmailComponent},
+  // {
+  //   path:'userinfo', component:UserinfoComponent
+  // },
+  // {
+  //   path:'upfile', component: FileuploadComponent
+  // },
   // {
   //   path:'about', component:UserfetchComponent, canActivate: [AuthGuard]
   // },

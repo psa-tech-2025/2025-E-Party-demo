@@ -69,7 +69,7 @@
     left: 50%;
     right: auto;
     transform: translateX(-50%);
-    bottom: 16px;
+    bottom: 56px;
   }
   .wa-label { display: none; } /* keep minimal on mobile */
   .wa-bubble { padding: 10px; border-radius: 999px; }
